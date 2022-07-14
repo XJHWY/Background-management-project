@@ -1,7 +1,6 @@
 <template>
 <div>
-  <!-- 一级路由挂载点 -->
-  <router-view></router-view>
+    layout下的index.vue
 </div>
 </template>
 
