@@ -1,29 +1,57 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Layout from '@/Layout'
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/login',
-    component: () => import('@/views/login/login.vue'),
-    hidden: true
+    component: () => import('@/views/login/login')
   },
   {
     path: '/404',
-    component: () => import('@/views/404/404'),
-    hidden: true
+    component: () => import('@/views/404/404')
   },
   {
     path: '/',
-    component: Layout,
-    redirect: '/dashboard',
-    name: 'Dashboard',
-    children: [{
-      path: 'dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: '首页', icon: 'dashboard' }
-    }]
+    redirect: '/home',
+    component: () => import('@/Layout/index.vue'),
+    children: [
+      {
+        path: 'users',
+        component: () => import('@/views/second/users/users')
+      },
+      {
+        path: 'roles',
+        component: () => import('@/views/second/permissions/roles')
+      },
+      {
+        path: 'rights',
+        component: () => import('@/views/second/permissions/rights')
+      },
+      {
+        path: 'orders',
+        component: () => import('@/views/second/order/orders')
+      },
+      {
+        path: 'goods',
+        component: () => import('@/views/second/goods/goods')
+      },
+      {
+        path: 'categories',
+        component: () => import('@/views/second/goods/categories')
+      },
+      {
+        path: 'params',
+        component: () => import('@/views/second/goods/params')
+      },
+      {
+        path: 'orders',
+        component: () => import('@/views/second/order/orders')
+      },
+      {
+        path: 'home',
+        component: () => import('@/views/index')
+      }
+    ]
   }
 ]
 

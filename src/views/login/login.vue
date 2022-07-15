@@ -48,7 +48,6 @@ export default {
       try {
         // 二次验证
         await this.$refs.loginFormRef.validate()
-        console.log('校验成功')
         await this.$store.dispatch('user/login', this.loginForm)
         this.$router.push('/')
       } catch (err) {

@@ -1,11 +1,14 @@
 import { loginApi } from '@/api/login'
-import { setToken, getToken } from '@/utils/auth'
+import { setToken, getToken, removeToken, setTime } from '@/utils/auth'
 const state = {
-  token: getToken()
+  token: getToken() || null
 }
 const mutations = {
   setToken (state, payload) {
     state.token = payload
+  },
+  removeToken (state) {
+    state.token = null
   }
 }
 const actions = {
@@ -14,6 +17,11 @@ const actions = {
     console.log(res)
     context.commit('setToken', res.data.data.token)
     setToken(res.data.data.token)
+    setTime(Date.now())
+  },
+  async logout (context) {
+    context.commit('removeToken')
+    removeToken()
   }
 }
 export default {
